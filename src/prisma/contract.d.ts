@@ -23,9 +23,9 @@ import type {
 } from '@prisma/orm-postgres/contract/types';
 
 export type StorageHash =
-  StorageHashBase<'2a78522755928a738724f51f6f14dd367d05828e03c3e16907bcd1e73062cb88'>;
+  StorageHashBase<'02409bc886a3d6fe7ec574b6d2eb03fc6e46303693499a5f526a02b16f14fae6'>;
 export type ExecutionHash =
-  ExecutionHashBase<'2108c41709e9916c68f0ad122b6e4ebab49e565b51d4038b3bcc23efb3fd38cb'>;
+  ExecutionHashBase<'9afa6d8625f814fd112ab490a8f0a259fcb4f6ef7539fc682a4855aa5f0807fb'>;
 export type ProfileHash =
   ProfileHashBase<'3916f444a8a17ad749191acf9e08dad97d1a327b88c2f1d45d12f240296aa8b2'>;
 
@@ -344,22 +344,22 @@ export namespace Models {
     updatedAt: FieldOutputTypes['public']['Employee']['updatedAt'];
     readonly [RelationKeys]?: never;
   };
-  export type public_User = {
-    address: FieldOutputTypes['public']['User']['address'];
-    avatar_url: FieldOutputTypes['public']['User']['avatar_url'];
-    balance: FieldOutputTypes['public']['User']['balance'];
-    birth_date: FieldOutputTypes['public']['User']['birth_date'];
-    createdAt: FieldOutputTypes['public']['User']['createdAt'];
-    deleted_at: FieldOutputTypes['public']['User']['deleted_at'];
-    email: FieldOutputTypes['public']['User']['email'];
-    fullName: FieldOutputTypes['public']['User']['fullName'];
-    gender: FieldOutputTypes['public']['User']['gender'];
-    id: FieldOutputTypes['public']['User']['id'];
-    notes: FieldOutputTypes['public']['User']['notes'];
-    password: FieldOutputTypes['public']['User']['password'];
-    phoneNumber: FieldOutputTypes['public']['User']['phoneNumber'];
-    status: FieldOutputTypes['public']['User']['status'];
-    updatedAt: FieldOutputTypes['public']['User']['updatedAt'];
+  export type public_Student = {
+    address: FieldOutputTypes['public']['Student']['address'];
+    avatar_url: FieldOutputTypes['public']['Student']['avatar_url'];
+    balance: FieldOutputTypes['public']['Student']['balance'];
+    birth_date: FieldOutputTypes['public']['Student']['birth_date'];
+    createdAt: FieldOutputTypes['public']['Student']['createdAt'];
+    deleted_at: FieldOutputTypes['public']['Student']['deleted_at'];
+    email: FieldOutputTypes['public']['Student']['email'];
+    fullName: FieldOutputTypes['public']['Student']['fullName'];
+    gender: FieldOutputTypes['public']['Student']['gender'];
+    id: FieldOutputTypes['public']['Student']['id'];
+    notes: FieldOutputTypes['public']['Student']['notes'];
+    password: FieldOutputTypes['public']['Student']['password'];
+    phoneNumber: FieldOutputTypes['public']['Student']['phoneNumber'];
+    status: FieldOutputTypes['public']['Student']['status'];
+    updatedAt: FieldOutputTypes['public']['Student']['updatedAt'];
     readonly [RelationKeys]?: never;
   };
 }
@@ -368,7 +368,7 @@ export declare const models: {
   public: {
     Branch: Models.public_Branch;
     Employee: Models.public_Employee;
-    User: Models.public_User;
+    Student: Models.public_Student;
   };
 };
 
@@ -644,7 +644,7 @@ type ContractBase = Omit<
               indexes: readonly [];
               foreignKeys: readonly [];
             };
-            readonly users: {
+            readonly students: {
               columns: {
                 readonly address: {
                   readonly dataType: 'pg/text';
@@ -772,7 +772,7 @@ type ContractBase = Omit<
   readonly roots: {
     readonly branches: { readonly namespace: 'public' & NamespaceId; readonly model: 'Branch' };
     readonly employees: { readonly namespace: 'public' & NamespaceId; readonly model: 'Employee' };
-    readonly users: { readonly namespace: 'public' & NamespaceId; readonly model: 'User' };
+    readonly students: { readonly namespace: 'public' & NamespaceId; readonly model: 'Student' };
   };
   readonly domain: {
     readonly namespaces: {
@@ -1029,7 +1029,7 @@ type ContractBase = Omit<
               };
             };
           };
-          readonly User: {
+          readonly Student: {
             readonly fields: {
               readonly address: {
                 readonly nullable: false;
@@ -1126,7 +1126,7 @@ type ContractBase = Omit<
             };
             readonly relations: Record<string, never>;
             readonly storage: {
-              readonly table: 'users';
+              readonly table: 'students';
               readonly namespaceId: 'public';
               readonly fields: {
                 readonly address: { readonly column: 'address' };
@@ -1249,7 +1249,7 @@ type ContractBase = Omit<
             readonly params: { readonly precision: 3 };
           };
           readonly ref: {
-            readonly entry: 'users';
+            readonly entry: 'students';
             readonly field: 'createdAt';
             readonly namespace: 'public';
           };
@@ -1266,7 +1266,7 @@ type ContractBase = Omit<
             readonly params: { readonly precision: 3 };
           };
           readonly ref: {
-            readonly entry: 'users';
+            readonly entry: 'students';
             readonly field: 'updatedAt';
             readonly namespace: 'public';
           };

@@ -12,8 +12,8 @@
       "model": "Employee",
       "namespace": "public"
     },
-    "users": {
-      "model": "User",
+    "students": {
+      "model": "Student",
       "namespace": "public"
     }
   },
@@ -400,7 +400,7 @@
               "table": "employees"
             }
           },
-          "User": {
+          "Student": {
             "fields": {
               "address": {
                 "nullable": false,
@@ -582,7 +582,7 @@
                 }
               },
               "namespaceId": "public",
-              "table": "users"
+              "table": "students"
             }
           }
         }
@@ -915,7 +915,7 @@
                 }
               ]
             },
-            "users": {
+            "students": {
               "checks": [
                 {
                   "expression": "gender IN ('male', 'female')",
@@ -1062,10 +1062,10 @@
         "kind": "postgres-schema"
       }
     },
-    "storageHash": "2a78522755928a738724f51f6f14dd367d05828e03c3e16907bcd1e73062cb88"
+    "storageHash": "02409bc886a3d6fe7ec574b6d2eb03fc6e46303693499a5f526a02b16f14fae6"
   },
   "execution": {
-    "executionHash": "2108c41709e9916c68f0ad122b6e4ebab49e565b51d4038b3bcc23efb3fd38cb",
+    "executionHash": "9afa6d8625f814fd112ab490a8f0a259fcb4f6ef7539fc682a4855aa5f0807fb",
     "mutations": {
       "defaults": [
         {
@@ -1147,7 +1147,7 @@
             }
           },
           "ref": {
-            "entry": "users",
+            "entry": "students",
             "field": "createdAt",
             "namespace": "public"
           }
@@ -1168,7 +1168,7 @@
             }
           },
           "ref": {
-            "entry": "users",
+            "entry": "students",
             "field": "updatedAt",
             "namespace": "public"
           }
