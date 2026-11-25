@@ -1,0 +1,67 @@
+// use prisma-8
+
+model User {
+  id        Uuid               @id @default(sql`gen_random_uuid()`)
+  fullName    Varchar(150)       @map("full_name")
+  phoneNumber Varchar(20)        @map("phone_number")
+  email String @unique
+  password String
+  avatar_url String
+  birth_date DateTime
+  gender Varchar(20)
+  address String
+  status Varchar(20)
+  balance Int @default(0)
+  notes String
+  createdAt DateTime           @default(now()) @onCreate(now())
+  updatedAt temporal.UpdatedAt
+  deleted_at DateTime
+
+  @@check(expression: sql`gender IN ('male', 'female')`, name: "users_gender_allowed")
+  @@check(expression: sql`status IN ('NEW','ACTIVE','FROZEN','GRADUATED','DROPPED')`, name: "users_status_allowed")
+  @@map("users")
+}
+
+model Branch {
+  id        Int                          @id @default(autoincrement())
+  name      Varchar(150)
+  address   String
+  phone     Varchar(20)?
+  latitude  Decimal(precision: 9, scale: 6)?
+  longitude Decimal(precision: 9, scale: 6)?
+  isActive  Boolean                      @default(true) @map("is_active")
+  createdAt DateTime                     @default(now()) @onCreate(now()) @map("created_at")
+  updatedAt temporal.UpdatedAt           @default(now()) @map("updated_at")
+  deletedAt DateTime?                    @map("deleted_at")
+
+  @@map("branches")
+}
+
+model Employee {
+  id             Int                           @id @default(autoincrement())
+  fullName       Varchar(150)                  @map("full_name")
+  phone          Varchar(20)                   @unique
+  email          Varchar(150)?                 @unique
+  password       String                        @map("password")
+  avatarUrl      String?                       @map("avatar_url")
+  role           Varchar(30)                   @default("TEACHER")
+  position       Varchar(100)
+  specialization Varchar(150)?
+  bio            String?
+  hireDate       Date                          @default(sql`CURRENT_DATE`) @map("hire_date")
+  salaryType     Varchar(20)                   @default("FIXED") @map("salary_type")
+  baseSalary     Decimal(precision: 14, scale: 2) @default(0.00) @map("base_salary")
+  percentageRate Decimal(precision: 5, scale: 2)  @default(0.00) @map("percentage_rate")
+  status         Varchar(20)                   @default("ACTIVE")
+  lastLoginAt    DateTime?                     @map("last_login_at")
+  createdAt      DateTime                      @default(now()) @onCreate(now()) @map("created_at")
+  updatedAt      temporal.UpdatedAt            @default(now()) @map("updated_at")
+  deletedAt      DateTime?                     @map("deleted_at")
+
+  @@check(expression: sql`role IN ('SUPER_ADMIN', 'BRANCH_MANAGER', 'ADMIN', 'SALES_MANAGER', 'TEACHER', 'ASSISTANT', 'ACCOUNTANT')`, name: "employees_role_allowed")
+  @@check(expression: sql`salary_type IN ('FIXED', 'PERCENTAGE', 'PER_HOUR', 'HYBRID')`, name: "employees_salary_type_allowed")
+  @@check(expression: sql`percentage_rate >= 0 AND percentage_rate <= 100`, name: "employees_percentage_rate_range")
+  @@check(expression: sql`status IN ('ACTIVE', 'BLOCKED')`, name: "employees_status_allowed")
+  @@map("employees")
+}
+
