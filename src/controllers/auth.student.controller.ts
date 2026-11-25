@@ -8,14 +8,6 @@ export class AuthStudentController {
     this.authStudentService = authStudentService;
   }
 
-  register = async (req: Request, res: Response, next: NextFunction) => {
-    try {
-      res.status(201).json({ message: "Student register" });
-    } catch (error) {
-      next(error);
-    }
-  };
-
   login = async (req: Request, res: Response, next: NextFunction) => {
     try {
       res.status(200).json({ message: "Student login" });

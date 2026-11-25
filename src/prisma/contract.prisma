@@ -1,6 +1,6 @@
 // use prisma-8
 
-model User {
+model Student {
   id        Uuid               @id @default(sql`gen_random_uuid()`)
   fullName    Varchar(150)       @map("full_name")
   phoneNumber Varchar(20)        @map("phone_number")
@@ -16,6 +16,7 @@ model User {
   createdAt DateTime           @default(now()) @onCreate(now())
   updatedAt temporal.UpdatedAt
   deleted_at DateTime
+  @@map("students")
 
   @@check(expression: sql`gender IN ('male', 'female')`, name: "users_gender_allowed")
   @@check(expression: sql`status IN ('NEW','ACTIVE','FROZEN','GRADUATED','DROPPED')`, name: "users_status_allowed")
