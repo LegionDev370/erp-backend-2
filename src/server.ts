@@ -3,6 +3,7 @@ import type { Request, Response, NextFunction } from "express";
 import { Routes } from "./routes/index.ts";
 import cors from "cors";
 import type { IERROR } from "./types/error.type.ts";
+import { seedSuperAdmin } from "./seeds/employee.seeds.ts";
 const app = express();
 const PORT = process.env.PORT ? Number(process.env.PORT) : 3000;
 app.use(
@@ -12,7 +13,7 @@ app.use(
   }),
 );
 app.use(express.json());
-app.use(Routes());
+app.use("/api", Routes());
 app.use((err: IERROR, req: Request, res: Response, next: NextFunction) => {
   if (err.status_code >= 500) {
     res.statusCode = err.status_code;
@@ -26,6 +27,15 @@ app.use((err: IERROR, req: Request, res: Response, next: NextFunction) => {
   res.json(err);
 });
 
-app.listen(PORT, "0.0.0.0", () => {
-  console.log(`Server is running on port ${PORT}: http://localhost:${PORT}`);
+async function bootstrap() {
+  await seedSuperAdmin();
+
+  app.listen(PORT, "0.0.0.0", () => {
+    console.log(`Server is running on port ${PORT}: http://localhost:${PORT}`);
+  });
+}
+
+bootstrap().catch((error) => {
+  console.error("Server ishga tushirishda xatolik:", error);
+  process.exit(1);
 });

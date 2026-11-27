@@ -23,7 +23,7 @@ import type {
 } from '@prisma/orm-postgres/contract/types';
 
 export type StorageHash =
-  StorageHashBase<'02409bc886a3d6fe7ec574b6d2eb03fc6e46303693499a5f526a02b16f14fae6'>;
+  StorageHashBase<'793db69715bfb17c15a99bec8d08ef1c28485b01f7c62fa7fd5a482c8ee038db'>;
 export type ExecutionHash =
   ExecutionHashBase<'9afa6d8625f814fd112ab490a8f0a259fcb4f6ef7539fc682a4855aa5f0807fb'>;
 export type ProfileHash =
@@ -335,13 +335,13 @@ export namespace Models {
     lastLoginAt: FieldOutputTypes['public']['Employee']['lastLoginAt'];
     password: FieldOutputTypes['public']['Employee']['password'];
     percentageRate: FieldOutputTypes['public']['Employee']['percentageRate'];
-    phone: FieldOutputTypes['public']['Employee']['phone'];
     position: FieldOutputTypes['public']['Employee']['position'];
     role: FieldOutputTypes['public']['Employee']['role'];
     salaryType: FieldOutputTypes['public']['Employee']['salaryType'];
     specialization: FieldOutputTypes['public']['Employee']['specialization'];
     status: FieldOutputTypes['public']['Employee']['status'];
     updatedAt: FieldOutputTypes['public']['Employee']['updatedAt'];
+    username: FieldOutputTypes['public']['Employee']['username'];
     readonly [RelationKeys]?: never;
   };
   export type public_Student = {
@@ -573,13 +573,6 @@ type ContractBase = Omit<
                   readonly typeParams: { readonly precision: 5; readonly scale: 2 };
                   readonly many: false;
                 };
-                readonly phone: {
-                  readonly dataType: 'pg/varchar';
-                  readonly codecId: 'sql/varchar@1';
-                  readonly nullable: false;
-                  readonly typeParams: { readonly length: 20 };
-                  readonly many: false;
-                };
                 readonly position: {
                   readonly dataType: 'pg/varchar';
                   readonly codecId: 'sql/varchar@1';
@@ -591,10 +584,6 @@ type ContractBase = Omit<
                   readonly dataType: 'pg/varchar';
                   readonly codecId: 'sql/varchar@1';
                   readonly nullable: false;
-                  readonly default: {
-                    readonly kind: 'literal';
-                    readonly value: DefaultLiteralValue<'sql/varchar@1', 'TEACHER'>;
-                  };
                   readonly typeParams: { readonly length: 30 };
                   readonly many: false;
                 };
@@ -635,10 +624,17 @@ type ContractBase = Omit<
                   readonly typeParams: { readonly precision: 3 };
                   readonly many: false;
                 };
+                readonly username: {
+                  readonly dataType: 'pg/varchar';
+                  readonly codecId: 'sql/varchar@1';
+                  readonly nullable: false;
+                  readonly typeParams: { readonly length: 20 };
+                  readonly many: false;
+                };
               };
               primaryKey: { readonly columns: readonly ['id'] };
               uniques: readonly [
-                { readonly columns: readonly ['phone'] },
+                { readonly columns: readonly ['username'] },
                 { readonly columns: readonly ['email'] },
               ];
               indexes: readonly [];
@@ -945,14 +941,6 @@ type ContractBase = Omit<
                   readonly typeParams: { readonly precision: 5; readonly scale: 2 };
                 };
               };
-              readonly phone: {
-                readonly nullable: false;
-                readonly type: {
-                  readonly kind: 'scalar';
-                  readonly codecId: 'sql/varchar@1';
-                  readonly typeParams: { readonly length: 20 };
-                };
-              };
               readonly position: {
                 readonly nullable: false;
                 readonly type: {
@@ -1001,6 +989,14 @@ type ContractBase = Omit<
                   readonly typeParams: { readonly precision: 3 };
                 };
               };
+              readonly username: {
+                readonly nullable: false;
+                readonly type: {
+                  readonly kind: 'scalar';
+                  readonly codecId: 'sql/varchar@1';
+                  readonly typeParams: { readonly length: 20 };
+                };
+              };
             };
             readonly relations: Record<string, never>;
             readonly storage: {
@@ -1019,13 +1015,13 @@ type ContractBase = Omit<
                 readonly lastLoginAt: { readonly column: 'last_login_at' };
                 readonly password: { readonly column: 'password' };
                 readonly percentageRate: { readonly column: 'percentage_rate' };
-                readonly phone: { readonly column: 'phone' };
                 readonly position: { readonly column: 'position' };
                 readonly role: { readonly column: 'role' };
                 readonly salaryType: { readonly column: 'salary_type' };
                 readonly specialization: { readonly column: 'specialization' };
                 readonly status: { readonly column: 'status' };
                 readonly updatedAt: { readonly column: 'updated_at' };
+                readonly username: { readonly column: 'username' };
               };
             };
           };

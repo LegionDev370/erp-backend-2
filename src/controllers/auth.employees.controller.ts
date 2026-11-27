@@ -6,7 +6,11 @@ export class AuthEmployeesController {
   constructor() {}
   register = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      res.status(201).json({ message: "Employee register" });
+      const body = req.body;
+      const response = await this.authEmployessService.registerService(body);
+      res
+        .status(201)
+        .json({ status: true, message: "success", data: { id: response } });
     } catch (error) {
       next(error);
     }

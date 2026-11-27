@@ -264,16 +264,6 @@
                   }
                 }
               },
-              "phone": {
-                "nullable": false,
-                "type": {
-                  "codecId": "sql/varchar@1",
-                  "kind": "scalar",
-                  "typeParams": {
-                    "length": 20
-                  }
-                }
-              },
               "position": {
                 "nullable": false,
                 "type": {
@@ -333,6 +323,16 @@
                     "precision": 3
                   }
                 }
+              },
+              "username": {
+                "nullable": false,
+                "type": {
+                  "codecId": "sql/varchar@1",
+                  "kind": "scalar",
+                  "typeParams": {
+                    "length": 20
+                  }
+                }
               }
             },
             "relations": {},
@@ -374,9 +374,6 @@
                 "percentageRate": {
                   "column": "percentage_rate"
                 },
-                "phone": {
-                  "column": "phone"
-                },
                 "position": {
                   "column": "position"
                 },
@@ -394,6 +391,9 @@
                 },
                 "updatedAt": {
                   "column": "updated_at"
+                },
+                "username": {
+                  "column": "username"
                 }
               },
               "namespaceId": "public",
@@ -822,14 +822,6 @@
                     "scale": 2
                   }
                 },
-                "phone": {
-                  "codecId": "sql/varchar@1",
-                  "dataType": "pg/varchar",
-                  "nullable": false,
-                  "typeParams": {
-                    "length": 20
-                  }
-                },
                 "position": {
                   "codecId": "sql/varchar@1",
                   "dataType": "pg/varchar",
@@ -841,10 +833,6 @@
                 "role": {
                   "codecId": "sql/varchar@1",
                   "dataType": "pg/varchar",
-                  "default": {
-                    "kind": "literal",
-                    "value": "TEACHER"
-                  },
                   "nullable": false,
                   "typeParams": {
                     "length": 30
@@ -893,6 +881,14 @@
                   "typeParams": {
                     "precision": 3
                   }
+                },
+                "username": {
+                  "codecId": "sql/varchar@1",
+                  "dataType": "pg/varchar",
+                  "nullable": false,
+                  "typeParams": {
+                    "length": 20
+                  }
                 }
               },
               "foreignKeys": [],
@@ -905,7 +901,7 @@
               "uniques": [
                 {
                   "columns": [
-                    "phone"
+                    "username"
                   ]
                 },
                 {
@@ -1062,7 +1058,7 @@
         "kind": "postgres-schema"
       }
     },
-    "storageHash": "02409bc886a3d6fe7ec574b6d2eb03fc6e46303693499a5f526a02b16f14fae6"
+    "storageHash": "793db69715bfb17c15a99bec8d08ef1c28485b01f7c62fa7fd5a482c8ee038db"
   },
   "execution": {
     "executionHash": "9afa6d8625f814fd112ab490a8f0a259fcb4f6ef7539fc682a4855aa5f0807fb",

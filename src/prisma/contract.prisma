@@ -41,11 +41,11 @@ model Branch {
 model Employee {
   id             Int                           @id @default(autoincrement())
   fullName       Varchar(150)                  @map("full_name")
-  phone          Varchar(20)                   @unique
+  username       Varchar(20)                   @unique
   email          Varchar(150)?                 @unique
   password       String                        @map("password")
   avatarUrl      String?                       @map("avatar_url")
-  role           Varchar(30)                   @default("TEACHER")
+  role           Varchar(30)                   
   position       Varchar(100)
   specialization Varchar(150)?
   bio            String?

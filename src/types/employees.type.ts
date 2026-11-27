@@ -13,7 +13,7 @@ export type EmployeeStatus = "ACTIVE" | "BLOCKED";
 
 export interface IEmployee {
   fullName: string;
-  phone: string;
+  username: string;
   email?: string | null;
   avatarUrl?: string | null;
   role: EmployeeRole;
