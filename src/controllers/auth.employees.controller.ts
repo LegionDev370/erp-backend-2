@@ -18,7 +18,9 @@ export class AuthEmployeesController {
 
   login = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      res.status(200).json({ message: "Employee login" });
+      const body = req.body;
+      const response = await this.authEmployessService.loginService(body);
+      res.status(200).json({ status: true, message: "success", data: response });
     } catch (error) {
       next(error);
     }

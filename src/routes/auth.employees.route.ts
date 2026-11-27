@@ -10,11 +10,11 @@ authEmployeesRouter.post(
   authEmployessController.register.bind(authEmployessController),
 );
 authEmployeesRouter.post(
-  "auth/employees/login",
+  "/auth/employees/login",
   authEmployessController.login.bind(authEmployessController),
 );
 authEmployeesRouter.post(
-  "auth/employees/logout",
+  "/auth/employees/logout",
   authEmployessController.logout.bind(authEmployessController),
 );
 
